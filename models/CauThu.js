@@ -22,7 +22,8 @@ const CauThuSchema = mongoose.Schema({
         required: true
     },
     AVATAR: {
-        type: string,
+        data: Buffer,
+        contentType: String,
         required: true
     },
     SOAO: {

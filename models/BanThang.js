@@ -20,6 +20,10 @@ const BanThangSchema = mongoose.Schema({
     PHUTGHIBAN: {
         type: int,
         required: true
+    },
+    LOAIBANTHANG: {
+        type: int,
+        required: true
     }
     
 })
