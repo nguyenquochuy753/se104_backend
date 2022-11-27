@@ -9,17 +9,9 @@ const TaiKhoanSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    ADMIN: {
-        type: Boolean,
-        default: false
-    },
-    ORGANIZER: {
-        type: Boolean,
-        default: false
-    },
-    Manager: {
-        type: Boolean,
-        default:false
+    PHANQUYEN: {
+        type: String,
+        default: ''
     }
 })
 

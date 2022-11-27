@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const dotenv = require('dotenv')
 const authRoutes = require('./routes/authRouter')
+const BangXepHangRoutes = require('./routes/bangXepHangRoutes')
 
 dotenv.config()
 const app = express()
@@ -14,6 +15,8 @@ mongoose.connect(process.env.MONGO_CONNECT_URL, () => {
 })
 
 app.use('/v1/auth', authRoutes)
+app.use('/v1/bangxephang',BangXepHangRoutes)
+
 
 app.listen(8000, () => {
     console.log('Server running on port 8000')
