@@ -18,7 +18,7 @@ const CauThuSchema = mongoose.Schema({
         required: true
     },
     QUOCTICH: {
-        type: varchar,
+        type: string,
         required: true
     },
     AVATAR: {
