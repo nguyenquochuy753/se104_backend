@@ -10,12 +10,12 @@ const DSGhiBanSchema = mongoose.Schema({
         required: true
     },
     VITRI: {
-        type: varchar,
+        type: string,
         required: true
     },
     SOBANTHANG: {
         type: int,
-        required: true
+        default:0
     }
 })
 

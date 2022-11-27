@@ -10,16 +10,16 @@ const DSNhanTheSchema = mongoose.Schema({
         required: true
     },
     VITRI: {
-        type: varchar,
+        type: string,
         required: true
     },
     SOTHEVANG: {
         type: int,
-        required: true
+        default:0
     },
     SOTHEDO: {
         type: int,
-        required: true
+        default:0
     }
 
 })

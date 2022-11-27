@@ -10,11 +10,11 @@ const CauThuSchema = mongoose.Schema({
         required: true
     },
     HOTEN: {
-        type: varchar,
+        type: string,
         required: true
     },
     NGAYSINH: {
-        type: dateTime,
+        type: Date,
         required: true
     },
     QUOCTICH: {
@@ -31,20 +31,20 @@ const CauThuSchema = mongoose.Schema({
         required: true
     },
     VITRI: {
-        type: varchar,
+        type: string,
         required: true
     },
     SOBANTHANG: {
         type: int,
-        required: true
+        default:0
     },
     SOTHEDO: {
         type: int,
-        required: true
+        default:0
     },
     SOTHEVANG: {
         type: int,
-        required: true
+        default:0
     }
 })
 
