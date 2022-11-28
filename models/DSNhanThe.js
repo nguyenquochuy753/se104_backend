@@ -2,23 +2,25 @@ const mongoose = require('mongoose')
 
 const DSNhanTheSchema = mongoose.Schema({
     MACT: {
-        type: int,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CauThu',
         required: true
     },
     MACLB: {
-        type: int,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CauLacBo',
         required: true
     },
     VITRI: {
-        type: string,
+        type: String,
         required: true
     },
     SOTHEVANG: {
-        type: int,
+        type: Number,
         default:0
     },
     SOTHEDO: {
-        type: int,
+        type: Number,
         default:0
     }
 

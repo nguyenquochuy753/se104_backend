@@ -10,10 +10,14 @@ const TranDauSchema = mongoose.Schema({
         required: true
     },
     DOI1:{
-        type:Number
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CauLacBo',
+        required:true
     },
     DOI2: {
-        type: Number
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CauLacBo',
+        required:true
     },
     VONGDAU: {
         type: Number,

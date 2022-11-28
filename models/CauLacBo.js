@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const CauLacBoSchema = mongoose.Schema({
     MAMG: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'MuaGiai',
         required: true
     },
     TENCLB: {
@@ -18,16 +19,15 @@ const CauLacBoSchema = mongoose.Schema({
         required: true
     },
     SL_CAUTHU: {
-        type: int,
+        type: Number,
         default: 0
     },
     SL_HLV: {
-        type: int,
+        type: Number,
         default: 0
     },
     LOGO: {
-        data: Buffer,
-        contentType: String,
+        type: String,
         required: true
     }
 }, { timestamps: true })

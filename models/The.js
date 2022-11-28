@@ -3,24 +3,27 @@ const mongoose = require("mongoose");
 const TheSchema = mongoose.Schema(
   {
     MACT: {
-      type: int,
-      require: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'CauThu',
+      required: true,
     },
     MACLB: {
-      type: int,
-      require: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'CauLacBo',
+      required: true,
     },
     MACT_TD: {
-      type: int,
-      require: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'CT_TranDau',
+      required: true,
     },
     PHUTNHANTHE: {
-      type: int,
-      require: true,
+      type: Number,
+      required: true,
     },
     LOAITHE: {
-      type: int,
-      require: true,
+      type: Number,
+      required: true,
     },
   },
   { timestamps: true }
