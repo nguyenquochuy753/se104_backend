@@ -3,23 +3,23 @@ const mongoose = require("mongoose");
 const TheSchema = mongoose.Schema(
   {
     MACT: {
-      type: int,
+      type: Number,
       require: true,
     },
     MACLB: {
-      type: int,
+      type: Number,
       require: true,
     },
     MACT_TD: {
-      type: int,
+      type: Number,
       require: true,
     },
     PHUTNHANTHE: {
-      type: int,
+      type: Number,
       require: true,
     },
     LOAITHE: {
-      type: int,
+      type: Number,
       require: true,
     },
   },

@@ -6,7 +6,7 @@ const ThamSoSchema = mongoose.Schema({
     require: true,
   },
   GIATRITHAMSO: {
-    type: int,
+    type: Number,
     require: true,
   },
 });
