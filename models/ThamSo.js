@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const ThamSoSchema = mongoose.Schema({
   TENTHAMSO: {
     type: String,
-    require: true,
+    required: true,
   },
   GIATRITHAMSO: {
     type: Number,
-    require: true,
+    required: true,
   },
 });
 

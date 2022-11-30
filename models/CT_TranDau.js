@@ -3,26 +3,25 @@ const mongoose = require("mongoose");
 const CT_TranDauSchema = mongoose.Schema(
   {
     MATD: {
-      type: Number,
-      require: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref:'TranDau',
+      required: true,
     },
     SCORE_1: {
       type: Number,
-      require: true,
       default: 0,
     },
     SCORE_2: {
       type: Number,
-      require: true,
       default: 0,
     },
     CARD_1: {
       type: Number,
-      require: true,
+      required: true,
     },
     CARD_2: {
       type: Number,
-      require: true,
+      required: true,
     },
   },
   { timestamps: true }

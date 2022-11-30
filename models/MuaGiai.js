@@ -6,12 +6,11 @@ const MuaGiaiSchema = mongoose.Schema({
         required: true
     },
     SL_CLB: {
-        type: int,
+        type: Number,
         required: true
     },
     LOGO: {
-        data: Buffer,
-        contentType: String,
+        type:String,
         required: true
     }
 }, { timestamps: true })

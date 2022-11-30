@@ -1,29 +1,25 @@
 const mongoose = require('mongoose')
 
 const CauThuSchema = mongoose.Schema({
-    MACT: {
-        type: int,
-        required: true
-    },
     MACLB: {
-        type: int,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'CauLacBo',
         required: true
     },
     HOTEN: {
-        type: string,
+        type: String,
         required: true
     },
     NGAYSINH: {
-        type: Date,
+        type: String,
         required: true
     },
     QUOCTICH: {
-        type: string,
+        type: String,
         required: true
     },
     AVATAR: {
-        data: Buffer,
-        contentType: String,
+        type: String,
         required: true
     },
     SOAO: {
@@ -31,19 +27,19 @@ const CauThuSchema = mongoose.Schema({
         required: true
     },
     VITRI: {
-        type: string,
+        type: String,
         required: true
     },
     SOBANTHANG: {
-        type: int,
+        type: Number,
         default:0
     },
     SOTHEDO: {
-        type: int,
+        type: Number,
         default:0
     },
     SOTHEVANG: {
-        type: int,
+        type: Number,
         default:0
     }
 })

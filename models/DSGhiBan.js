@@ -2,19 +2,21 @@ const mongoose = require('mongoose')
 
 const DSGhiBanSchema = mongoose.Schema({
     MACT: {
-        type: int,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'CauThu',
         required: true
     },
     MACLB: {
-        type: int,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CauLacBo',
         required: true
     },
     VITRI: {
-        type: string,
+        type: String,
         required: true
     },
     SOBANTHANG: {
-        type: int,
+        type: Number,
         default:0
     }
 })

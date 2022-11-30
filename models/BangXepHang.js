@@ -2,13 +2,19 @@ const mongoose = require('mongoose')
 
 const BangXepHangSchema = mongoose.Schema({
     MACLB: {
-        type:Number
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'CauLacBo',
+        required:true
     },
     MAMG: {
-        type: Number
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'MuaGiai',
+        required: true
     },
     TENCLB: {
-        type: String
+        type: mongoose.Schema.Types.String,
+        ref:'CauLacBo',
+        required: true
     },
     TRANDACHOI: {
         type: Number,

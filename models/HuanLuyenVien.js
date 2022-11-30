@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const HuanLuyenVienSchema = mongoose.Schema({
     MACLB: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CauLacBo',
         required: true
     },
     HOTEN: {
@@ -10,11 +11,11 @@ const HuanLuyenVienSchema = mongoose.Schema({
         required: true
     },
     NGAYSINH: {
-        type: Date,
+        type: String,
         required: true
     },
     NGAYTHAMGIA: {
-        type: Date,
+        type: String,
         required: true
     },
     QUOCTICH: {

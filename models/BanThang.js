@@ -1,28 +1,27 @@
 const mongoose = require('mongoose')
 
 const BanThangSchema = mongoose.Schema({
-    ID_BANTHANG: {
-        type: int,
-        required: true
-    },
     MACT: {
-        type: int,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'CauThu',
         required: true
     },
     MACLB: {
-        type: int,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'CauLacBo',
         required: true
     },
     MACT_TD: {
-        type: int,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'CT_TranDau',
         required: true
     },
     PHUTGHIBAN: {
-        type: int,
+        type: Number,
         required: true
     },
     LOAIBANTHANG: {
-        type: int,
+        type: Number,
         required: true
     }
     
