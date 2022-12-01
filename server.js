@@ -13,6 +13,10 @@ const CT_TranDauRoutes = require("./routes/CT_TranDauRoutes");
 const TheRoutes = require("./routes/TheRoutes");
 const ThamSoRoutes = require("./routes/ThamSoRoutes");
 const UuTienXepHangRoutes = require("./routes/UuTienXepHangRoutes");
+const CauThuRoutes = require("./routes/CauThuRouter");
+const BanThangRoutes = require("./routes/BanThangRouter");
+const DSGhiBanRoutes = require("./routes/DSGhiBanRouter");
+const DSNhanTheRoutes = require("./routes/DSNhanTheRouter");
 
 
 dotenv.config();
@@ -32,6 +36,10 @@ app.use('/v1/muagiai', MuaGiaiRoutes)
 app.use('/v1/caulacbo', CauLacBoRoutes)
 app.use('/v1/huanluyenvien', HuanLuyenVienRoutes)
 app.use('/v1/loaithe', LoaiTheRoutes)
+app.use('/v1/banthang', BanThangRoutes)
+app.use('/v1/cauthu', CauThuRoutes)
+app.use('/v1/dsghiban', DSGhiBanRoutes)
+app.use('/v1/dsnhanthe', DSNhanTheRoutes)
 app.use(CT_TranDauRoutes);
 app.use(TheRoutes);
 app.use(ThamSoRoutes);
