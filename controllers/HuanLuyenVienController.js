@@ -1,0 +1,43 @@
+const HuanLuyenVienModel = require('../models/HuanLuyenVien');
+
+const HuanLuyenVien = {
+    TaoHuanLuyenVien: async (req, res) => {
+        const HuanLuyenVien = new HuanLuyenVienModel(req.body)
+        try {
+            await HuanLuyenVien.save()
+            res.status(200).json(HuanLuyenVien)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+
+    GetHuanLuyenVien: async (req, res) => {
+        const HLV = await HuanLuyenVienModel.find({});
+        try {
+            res.status(200).json(HLV)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+
+    UpdateHuanLuyenVien: async (req, res) => {
+        try {
+            const HLV = await HuanLuyenVienModel.findByIdAndUpdate(req.params.id, req.body);
+            await HLV.save();
+            res.send(HLV);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    },
+    DeleteHuanLuyenVien: async (req, res) => {
+        try {
+            const HLV = await HuanLuyenVienModel.findByIdAndDelete(req.params.id, req.body);
+            if (!HLV) res.status(404).send("Không tìm thấy dữ liệu");
+            res.status(200).send();
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+}
+
+module.exports = HuanLuyenVien
