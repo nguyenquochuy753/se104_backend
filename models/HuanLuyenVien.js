@@ -27,8 +27,7 @@ const HuanLuyenVienSchema = mongoose.Schema({
         required: true
     },
     AVATAR: {
-        data: Buffer,
-        contentType: String,
+        type: String,
         required: true
     }
 }, { timestamps: true })
