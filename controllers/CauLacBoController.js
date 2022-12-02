@@ -2,7 +2,17 @@ const CauLacBoModel = require('../models/CauLacBo');
 
 const CauLacBo = {
     TaoCauLacBo: async (req, res) => {
-        const CauLacBo = new CauLacBoModel(req.body)
+        const CauLacBo = new CauLacBoModel({
+            MAMG: req.body.MAMG,
+            TENCLB: req.body.TENCLB,
+            NAMTHANHLAP: req.body.NAMTHANHLAP,
+            SANVANDONG: req.body.SANVANDONG,
+            SL_CAUTHU: req.body.SL_CAUTHU,
+            SL_HLV: req.body.SL_HLV,
+        })
+        if(req.file){
+            CauLacBo.LOGO = req.file.path
+        }
         try {
             await CauLacBo.save()
             res.status(200).json(CauLacBo)
