@@ -40,6 +40,14 @@ const MuaGiai = {
         } catch (error) {
             res.status(500).send(error);
         }
+    },
+    SearchMuaGiai: async (req, res) => {
+        const data = await MuaGiaiModel.find({
+            "$or": [
+                { TENMUAGIAI: { $regex: req.params.key, $options: 'i' } }
+            ]
+        })
+        res.send(data)
     }
 }
 
