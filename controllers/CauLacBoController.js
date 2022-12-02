@@ -3,6 +3,9 @@ const CauLacBoModel = require('../models/CauLacBo');
 const CauLacBo = {
     TaoCauLacBo: async (req, res) => {
         const CauLacBo = new CauLacBoModel(req.body)
+        if (req.file) {
+            CauLacBo.LOGO = req.file.path
+        }
         try {
             await CauLacBo.save()
             res.status(200).json(CauLacBo)

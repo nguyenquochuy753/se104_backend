@@ -3,6 +3,9 @@ const HuanLuyenVienModel = require('../models/HuanLuyenVien');
 const HuanLuyenVien = {
     TaoHuanLuyenVien: async (req, res) => {
         const HuanLuyenVien = new HuanLuyenVienModel(req.body)
+        if (req.file) {
+            HuanLuyenVien.AVATAR = req.file.path
+        }
         try {
             await HuanLuyenVien.save()
             res.status(200).json(HuanLuyenVien)
