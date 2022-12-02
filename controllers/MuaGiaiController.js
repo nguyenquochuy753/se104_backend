@@ -3,6 +3,9 @@ const MuaGiaiModel = require('../models/MuaGiai');
 const MuaGiai = {
     TaoMuaGiai: async (req, res) => {
         const muagiai = new MuaGiaiModel(req.body)
+        if (req.file) {
+            muagiai.LOGO = req.file.path
+        }
         try {
             await muagiai.save()
             res.status(200).json(muagiai)
