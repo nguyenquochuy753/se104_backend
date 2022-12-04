@@ -3,6 +3,9 @@ const CauLacBoModel = require('../models/CauLacBo');
 const CauLacBo = {
     TaoCauLacBo: async (req, res) => {
         const CauLacBo = new CauLacBoModel(req.body)
+        if (req.file) {
+            CauLacBo.LOGO = req.file.path
+        }
         try {
             await CauLacBo.save()
             res.status(200).json(CauLacBo)
@@ -37,7 +40,17 @@ const CauLacBo = {
         } catch (error) {
             res.status(500).send(error);
         }
+    },
+    SearchCauLacBo: async (req, res) => {
+        const data = await CauLacBoModel.find({
+            "$or": [
+                { TENCLB: { $regex: req.params.key, $options: 'i' } },
+                { SANVANDONG: { $regex: req.params.key, $options: 'i' } }
+            ]
+        })
+        res.send(data)
     }
+
 }
 
 module.exports = CauLacBo

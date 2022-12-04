@@ -10,7 +10,7 @@ const MuaGiaiSchema = mongoose.Schema({
         required: true
     },
     LOGO: {
-        type:String,
+        type: String,
         required: true
     }
 }, { timestamps: true })

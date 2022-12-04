@@ -3,6 +3,9 @@ const HuanLuyenVienModel = require('../models/HuanLuyenVien');
 const HuanLuyenVien = {
     TaoHuanLuyenVien: async (req, res) => {
         const HuanLuyenVien = new HuanLuyenVienModel(req.body)
+        if (req.file) {
+            HuanLuyenVien.AVATAR = req.file.path
+        }
         try {
             await HuanLuyenVien.save()
             res.status(200).json(HuanLuyenVien)
@@ -37,6 +40,17 @@ const HuanLuyenVien = {
         } catch (error) {
             res.status(500).send(error);
         }
+    },
+    SearchHuanLuyenVien: async (req, res) => {
+        const data = await HuanLuyenVienModel.find({
+            "$or": [
+                { HOTEN: { $regex: req.params.key, $options: 'i' } },
+                { QUOCTICH: { $regex: req.params.key, $options: 'i' } },
+                { LOAI: { $regex: req.params.key, $options: 'i' } }
+
+            ]
+        })
+        res.send(data)
     }
 }
 
