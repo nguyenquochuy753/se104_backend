@@ -2,7 +2,17 @@ const CauThuModel = require('../models/CauThu');
 
 const CauThu = {
     TaoCauThu: async (req, res) => {
-        const cauthu = new CauThuModel(req.body)
+        const cauthu = new CauThuModel({
+            MACT: req.body.MACT,
+            HOTEN: req.body.HOTEN,
+            NGAYSINH:req.body.NGAYSINH,
+            QUOCTICH:req.body.QUOCTICH,
+            SOAO:req.body.SOAO,
+            VITRI:req.body.VITRI
+        })
+        if (req.file){
+            cauthu.AVATAR= req.file.path
+        }
         try {
             await CauThu.save()
             res.status(200).json(cauthu)
