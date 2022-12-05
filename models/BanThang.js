@@ -21,7 +21,7 @@ const BanThangSchema = mongoose.Schema({
         required: true
     },
     LOAIBANTHANG: {
-        type: Number,
+        type: String,
         required: true
     }
     

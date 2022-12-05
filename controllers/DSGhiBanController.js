@@ -4,7 +4,7 @@ const DSGhiBan = {
     TaoDSGhiBan: async (req, res) => {
         const dsghiban = new DSGhiBanModel(req.body)
         try {
-            await DSGhiBan.save()
+            await dsghiban.save()
             res.status(200).json(dsghiban)
         } catch (error) {
             res.status(500).json(error)

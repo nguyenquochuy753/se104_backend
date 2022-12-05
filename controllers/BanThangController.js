@@ -4,7 +4,7 @@ const BanThang = {
     TaoBanThang: async (req, res) => {
         const banthang = new BanThangModel(req.body)
         try {
-            await BanThang.save()
+            await banthang.save()
             res.status(200).json(banthang)
         } catch (error) {
             res.status(500).json(error)

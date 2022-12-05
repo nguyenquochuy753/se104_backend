@@ -4,7 +4,7 @@ const DSNhanThe = {
     TaoDSNhanThe: async (req, res) => {
         const dsnhanthe = new DSNhanTheModel(req.body)
         try {
-            await DSNhanThe.save()
+            await dsnhanthe.save()
             res.status(200).json(dsnhanthe)
         } catch (error) {
             res.status(500).json(error)
