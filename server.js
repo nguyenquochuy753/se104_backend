@@ -26,17 +26,17 @@ mongoose.connect(process.env.MONGO_CONNECT_URL, () => {
   console.log('DB CONNECTED')
 })
 app.use('/v1/auth', authRoutes)
-app.use('/v1/bangxephang',BangXepHangRoutes)
-app.use('./v1/loaibanthang',LoaiBanThangRoutes)
-app.use('./v1/trandau',TranDauRoutes)
+app.use('/v1/bangxephang', BangXepHangRoutes)
+app.use('./v1/loaibanthang', LoaiBanThangRoutes)
+app.use('./v1/trandau', TranDauRoutes)
 app.use('/v1/muagiai', MuaGiaiRoutes)
 app.use('/v1/caulacbo', CauLacBoRoutes)
 app.use('/v1/huanluyenvien', HuanLuyenVienRoutes)
 app.use('/v1/loaithe', LoaiTheRoutes)
-app.use('/v1/ct_trandau',CT_TranDauRoutes);
-app.use('/v1/the',TheRoutes);
-app.use('/v1/thamso',ThamSoRoutes);
-app.use('/v1/uutienxephang',UuTienXepHangRoutes);
+app.use('/v1/ct_trandau', CT_TranDauRoutes);
+app.use('/v1/the', TheRoutes);
+app.use('/v1/thamso', ThamSoRoutes);
+app.use('/v1/uutienxephang', UuTienXepHangRoutes);
 
 app.listen(8000, () => {
   console.log("Server running on port 8000");
