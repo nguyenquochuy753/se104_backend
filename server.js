@@ -15,6 +15,10 @@ const TheRoutes = require("./routes/TheRoutes");
 const ThamSoRoutes = require("./routes/ThamSoRoutes");
 const UuTienXepHangRoutes = require("./routes/UuTienXepHangRoutes");
 const TranDauRoutes = require('./routes/tranDauRoutes')
+const CauThuRoutes = require('./routes/CauThuRouter')
+const BanThangRoutes = require('./routes/BanThangRouter')
+const DSNhanTheRoutes = require('./routes/DSNhanTheRouter')
+const DSGhiBanRoutes = require('./routes/DSGhiBanRouter')
 
 dotenv.config();
 const app = express();
@@ -33,10 +37,15 @@ app.use('/v1/muagiai', MuaGiaiRoutes)
 app.use('/v1/caulacbo', CauLacBoRoutes)
 app.use('/v1/huanluyenvien', HuanLuyenVienRoutes)
 app.use('/v1/loaithe', LoaiTheRoutes)
-app.use('/v1/ct_trandau', CT_TranDauRoutes);
-app.use('/v1/the', TheRoutes);
-app.use('/v1/thamso', ThamSoRoutes);
-app.use('/v1/uutienxephang', UuTienXepHangRoutes);
+app.use('/v1/ct_trandau',CT_TranDauRoutes);
+app.use('/v1/the',TheRoutes);
+app.use('/v1/thamso',ThamSoRoutes);
+app.use('/v1/uutienxephang',UuTienXepHangRoutes);
+app.use('/v1/cauthu',CauThuRoutes);
+app.use('/v1/banthang',BanThangRoutes);
+app.use('/v1/dsghiban',DSGhiBanRoutes);
+app.use('/v1/dsnhanthe',DSNhanTheRoutes);
+
 
 app.listen(8000, () => {
   console.log("Server running on port 8000");
