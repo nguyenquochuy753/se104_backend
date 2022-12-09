@@ -2,11 +2,7 @@ const TaiKhoanModel = require('../models/TaiKhoan')
 
 const TaiKhoan = {
     DangKyTaiKhoan: async (req, res) => {
-        const taikhoan = new TaiKhoanModel({
-            TENTAIKHOAN: req.body.TENTAIKHOAN,
-            MATKHAU: req.body.MATKHAU,
-            PHANQUYEN: req.body.PHANQUYEN,
-        })
+        const taikhoan = new TaiKhoanModel(req.body)
         try {
             await taikhoan.save()
             res.status(200).json(taikhoan)

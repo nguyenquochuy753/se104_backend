@@ -49,6 +49,11 @@ const CauLacBo = {
             ]
         })
         res.send(data)
+    },
+    SearchCauLacBobyMG: async (req, res) => {
+        const { muagiaiID } = req.params;
+        const data = await CauLacBoModel.find({ MAMG: muagiaiID })
+        res.send(data)
     }
 
 }

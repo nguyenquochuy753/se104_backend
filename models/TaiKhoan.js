@@ -14,7 +14,7 @@ const TaiKhoanSchema = mongoose.Schema({
         type: String,
         require: true
     }
-})
+}, { timestamps: true })
 
 const TaiKhoan = mongoose.model('TaiKhoan', TaiKhoanSchema)
 module.exports = TaiKhoan

@@ -22,7 +22,15 @@ const MuaGiai = {
             res.status(500).json(error)
         }
     },
-
+    GetMuaGiaibyID: async (req, res) => {
+        const { muagiaiID } = req.params;
+        const MG = await MuaGiaiModel.findOne({ _id: muagiaiID })
+        try {
+            res.status(200).json(MG)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
     UpdateMuaGiai: async (req, res) => {
         try {
             const MG = await MuaGiaiModel.findByIdAndUpdate(req.params.id, req.body);
