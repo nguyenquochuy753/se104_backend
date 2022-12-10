@@ -18,7 +18,7 @@ const TaiKhoan = {
         try {
             const taikhoan = await TaiKhoanModel.findOne({ "TENTAIKHOAN": req.body.TENTAIKHOAN })
             if (taikhoan.MATKHAU == req.body.MATKHAU) {
-                res.status(200).json('Đăng nhập thành công')
+                res.status(200).json(taikhoan)
             }
             else {
                 res.status(401).json('Sai mật khẩu')
