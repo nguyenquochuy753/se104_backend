@@ -23,7 +23,7 @@ const CauThuSchema = mongoose.Schema({
         required: true
     },
     SOAO: {
-        type: int,
+        type: Number,
         required: true
     },
     VITRI: {

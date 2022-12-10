@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const TaiKhoanSchema = mongoose.Schema({
     TENTAIKHOAN: {
         type: String,
+        unique: true,
         required: true
     },
     MATKHAU: {
@@ -11,9 +12,9 @@ const TaiKhoanSchema = mongoose.Schema({
     },
     PHANQUYEN: {
         type: String,
-        default: ''
+        require: true
     }
 })
 
-const TaiKhoan = mongoose.model('TaiKhoan',TaiKhoanSchema)
+const TaiKhoan = mongoose.model('TaiKhoan', TaiKhoanSchema)
 module.exports = TaiKhoan

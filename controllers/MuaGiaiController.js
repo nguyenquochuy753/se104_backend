@@ -3,6 +3,9 @@ const MuaGiaiModel = require('../models/MuaGiai');
 const MuaGiai = {
     TaoMuaGiai: async (req, res) => {
         const muagiai = new MuaGiaiModel(req.body)
+        if (req.file) {
+            muagiai.LOGO = req.file.path
+        }
         try {
             await muagiai.save()
             res.status(200).json(muagiai)
@@ -37,6 +40,14 @@ const MuaGiai = {
         } catch (error) {
             res.status(500).send(error);
         }
+    },
+    SearchMuaGiai: async (req, res) => {
+        const data = await MuaGiaiModel.find({
+            "$or": [
+                { TENMUAGIAI: { $regex: req.params.key, $options: 'i' } }
+            ]
+        })
+        res.send(data)
     }
 }
 
