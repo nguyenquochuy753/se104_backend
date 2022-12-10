@@ -41,6 +41,19 @@ const CauThu = {
       res.status(500).send(error);
     }
   },
+  SearchCauThu: async (req, res) => {
+    const data = await CauThuModel.find({
+        "$or": [
+            { HOTEN: { $regex: req.params.key, $options: 'i' } }
+        ]
+    })
+    res.send(data)
+  },
+  SearchCauThubyMG: async (req, res) => {
+      const { muagiaiID } = req.params;
+      const data = await CauThuModel.find({ MAMG: muagiaiID })
+      res.send(data)
+  },
 };
 
 module.exports = CauThu;
