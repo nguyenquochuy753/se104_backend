@@ -9,6 +9,5 @@ router.get('/getcaulacbo', CauLacBoController.GetCauLacBo);
 router.patch('/updatecaulacbo/:id', CauLacBoController.UpdateCauLacBo);
 router.delete('/deletecaulacbo/:id', CauLacBoController.DeleteCauLacBo);
 router.get('/search/:key', CauLacBoController.SearchCauLacBo);
-router.get('/timclb',CauLacBoController.timCauLacBo);
 
 module.exports = router

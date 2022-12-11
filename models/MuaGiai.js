@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const MuaGiaiSchema = mongoose.Schema({
     TENMUAGIAI: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     SL_CLB: {
         type: Number,
