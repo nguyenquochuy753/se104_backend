@@ -56,7 +56,8 @@ const CauLacBo = {
             ]
         })
         res.send(data)
-    }
+    },
+    
 
 }
 
