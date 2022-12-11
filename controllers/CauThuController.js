@@ -43,14 +43,25 @@ const CauThu = {
   },
   topGhiBan: async(req , res)=>{
     try {
-      const sortCauThus = CauThuModel.find({}).sort({
+      const sortCauThus = await CauThuModel.find({}).sort({
         SOBANTHANG:-1
       })
       res.status(200).json(sortCauThus)
     } catch (error) {
       res.status(500).json(error)
     }
-  }
+  },
+  topThePhat: async (req, res) => {
+    try {
+      const sortCauThus = await CauThuModel.find({}).sort({
+        SOTHEVANG: -1,
+        SOTHEDO: -1
+      })
+      res.status(200).json(sortCauThus)
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  },
 };
 
 module.exports = CauThu;

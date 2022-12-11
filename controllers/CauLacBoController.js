@@ -11,6 +11,7 @@ const CauLacBo = {
             SL_HLV: req.body.SL_HLV,
         })
         if(req.file){
+            CauLacBo.LOGO = req.file.path;
         }
         try {
             await CauLacBo.save()
@@ -55,6 +56,14 @@ const CauLacBo = {
             ]
         })
         res.send(data)
+    },
+    timCauLacBo: async(req , res)=>{
+        try {
+            const caulacbo = await CauLacBoModel.findById(req.body._id)
+            res.status(200).json(caulacbo)
+        } catch (error) {
+            res.status(500).json(error)
+        }
     }
 
 }
