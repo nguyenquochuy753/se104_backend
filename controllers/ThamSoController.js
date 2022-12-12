@@ -2,10 +2,29 @@ const ThamSo = require("../models/ThamSo");
 
 const ThamSoController = {
   post_ThamSo: async (req, res) => {
-    const thamso = new ThamSo(req.body);
     try {
-      await thamso.save();
-      res.send(thamso);
+      ThamSo.findOne({ TENTHAMSO: req.body.TENTHAMSO }).exec((err, ts) => {
+        if (err) console.log(err);
+        if (ts) {
+          ThamSo.findOneAndUpdate(
+            { TENTHAMSO: req.body.TENTHAMSO },
+            {
+              $set: {
+                GIATRITHAMSO: req.body.GIATRITHAMSO,
+              },
+            }
+          ).exec((err, ts) => {
+            if (err) return res.status(400).json({ err });
+            if (ts) return res.status(201).json({ ts });
+          });
+        } else {
+          const thamso = new ThamSo(req.body);
+          thamso.save((err, ts) => {
+            if (err) return res.status(400).json({ err });
+            if (ts) return res.status(201).json({ ts });
+          });
+        }
+      });
     } catch (error) {
       res.status(500).send(error);
     }
