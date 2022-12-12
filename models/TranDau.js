@@ -1,37 +1,36 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const TranDauSchema = mongoose.Schema({
-    NGAYDIENRA: {
-        type: String,
-        required: true
-    },
-    THOIGIANDIENRA: {
-        type: String,
-        required: true
-    },
-    DOI1:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'CauLacBo',
-        required:true
-    },
-    DOI2: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'CauLacBo',
-        required:true
-    },
-    VONGDAU: {
-        type: Number,
-        required: true
-    },
-    LUOTDAU:{
-        type: Number,
-        required:true
-    },
-    SANVANDONG:{
-        type: String
-    }
+  NGAYDIENRA: {
+    type: String,
+    required: true,
+  },
+  THOIGIANDIENRA: {
+    type: String,
+    required: true,
+  },
+  DOI1: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "CauLacBo",
+    required: true,
+  },
+  DOI2: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "CauLacBo",
+    required: true,
+  },
+  VONGDAU: {
+    type: Number,
+    required: true,
+  },
+  LUOTDAU: {
+    type: Number,
+    required: true,
+  },
+  SANVANDONG: {
+    type: String,
+  },
+});
 
-})
-
-const TranDau = mongoose.model('TranDau',TranDauSchema)
-module.exports = TranDau
+const TranDau = mongoose.model("TranDau", TranDauSchema);
+module.exports = TranDau;
