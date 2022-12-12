@@ -28,6 +28,7 @@ app.use("/uploads", express.static("uploads"));
 mongoose.connect(process.env.MONGO_CONNECT_URL, () => {
   console.log("DB CONNECTED");
 });
+
 app.use("/v1/auth", authRoutes);
 app.use("/v1/bangxephang", BangXepHangRoutes);
 app.use("/v1/loaibanthang", LoaiBanThangRoutes);
