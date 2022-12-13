@@ -23,6 +23,15 @@ const HuanLuyenVien = {
         }
     },
 
+    GetaCoach: async (req, res) => {
+        try {
+            const HLV = await HuanLuyenVienModel.findById({_id: req.params.id});
+            res.status(200).json(HLV)
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    },
+
     UpdateHuanLuyenVien: async (req, res) => {
         try {
             const HLV = await HuanLuyenVienModel.findByIdAndUpdate(req.params.id, req.body);
