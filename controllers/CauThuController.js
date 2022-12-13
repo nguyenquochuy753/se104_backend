@@ -23,6 +23,15 @@ const CauThu = {
     }
   },
 
+  GetaPlayer: async (req, res) => {
+    try {
+      const CT = await CauThuModel.findById({_id: req.params.id});
+      res.status(200).json(CT);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
+
   UpdateCauThu: async (req, res) => {
     try {
       const CT = await CauThuModel.findByIdAndUpdate(req.params.id, req.body);
