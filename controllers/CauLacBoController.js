@@ -61,9 +61,29 @@ const CauLacBo = {
         const { muagiaiID } = req.params;
         const data = await CauLacBoModel.find({ MAMG: muagiaiID })
         res.send(data)
-    }
-    
-
+    },
+    themHLV: async(req,res)=>{
+        try {
+            const id = req.body._id;
+            const clb = await CauLacBoModel.findById(id)
+            clb.SL_HLV = clb.SL_HLV + 1;
+            clb.save()
+            res.status(200).json(clb)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+    themCT: async (req, res) => {
+        try {
+            const id = req.body._id;
+            const clb = await CauLacBoModel.findById(id)
+            clb.SL_CAUTHU = clb.SL_CAUTHU + 1;
+            clb.save()
+            res.status(200).json(clb)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
 }
 
 module.exports = CauLacBo
