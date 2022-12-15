@@ -50,18 +50,26 @@ const CauThu = {
       res.status(500).send(error);
     }
   },
-  SearchCauThu: async (req, res) => {
-    const data = await CauThuModel.find({
-        "$or": [
-            { HOTEN: { $regex: req.params.key, $options: 'i' } }
-        ]
-    })
-    res.send(data)
+  topGhiBan: async (req, res) => {
+    try {
+      const sortCauThus = await CauThuModel.find({}).sort({
+        SOBANTHANG: -1
+      })
+      res.status(200).json(sortCauThus)
+    } catch (error) {
+      res.status(500).json(error)
+    }
   },
-  SearchCauThubyMG: async (req, res) => {
-      const { muagiaiID } = req.params;
-      const data = await CauThuModel.find({ MAMG: muagiaiID })
-      res.send(data)
+  topThePhat: async (req, res) => {
+    try {
+      const sortCauThus = await CauThuModel.find({}).sort({
+        SOTHEVANG: -1,
+        SOTHEDO: -1
+      })
+      res.status(200).json(sortCauThus)
+    } catch (error) {
+      res.status(500).json(error)
+    }
   },
 };
 

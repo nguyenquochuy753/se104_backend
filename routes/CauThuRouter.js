@@ -7,7 +7,7 @@ router.get('/getcauthu', CauThuController.GetCauThu);
 router.get('/getaplayer/:id', CauThuController.GetaPlayer);
 router.patch('/updatecauthu/:id', CauThuController.UpdateCauThu);
 router.delete('/deletecauthu/:id', CauThuController.DeleteCauThu);
-router.get('/search/:key', CauThuController.SearchCauThu);
-router.get('/searchbyMG/:muagiaiID', CauThuController.SearchCauThubyMG);
+router.get('/topghiban', CauThuController.topGhiBan);
+router.get('/topthephat', CauThuController.topThePhat);
 
 module.exports = router

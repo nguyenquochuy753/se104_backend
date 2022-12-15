@@ -2,9 +2,16 @@ const CauLacBoModel = require('../models/CauLacBo');
 
 const CauLacBo = {
     TaoCauLacBo: async (req, res) => {
-        const CauLacBo = new CauLacBoModel(req.body)
-        if (req.file) {
-            CauLacBo.LOGO = req.file.path
+        const CauLacBo = new CauLacBoModel({
+            MAMG: req.body.MAMG,
+            TENCLB: req.body.TENCLB,
+            NAMTHANHLAP: req.body.NAMTHANHLAP,
+            SANVANDONG: req.body.SANVANDONG,
+            SL_CAUTHU: req.body.SL_CAUTHU,
+            SL_HLV: req.body.SL_HLV,
+        })
+        if(req.file){
+            CauLacBo.LOGO = req.file.path;
         }
         try {
             await CauLacBo.save()
@@ -62,8 +69,29 @@ const CauLacBo = {
         const { muagiaiID } = req.params;
         const data = await CauLacBoModel.find({ MAMG: muagiaiID })
         res.send(data)
-    }
-
+    },
+    themHLV: async(req,res)=>{
+        try {
+            const id = req.body._id;
+            const clb = await CauLacBoModel.findById(id)
+            clb.SL_HLV = clb.SL_HLV + 1;
+            clb.save()
+            res.status(200).json(clb)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+    themCT: async (req, res) => {
+        try {
+            const id = req.body._id;
+            const clb = await CauLacBoModel.findById(id)
+            clb.SL_CAUTHU = clb.SL_CAUTHU + 1;
+            clb.save()
+            res.status(200).json(clb)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
 }
 
 module.exports = CauLacBo
