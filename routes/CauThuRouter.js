@@ -11,6 +11,15 @@ router.patch(
   "/updateBanThangCauThu/:idCauThu",
   CauThuController.UpdateBanThang
 );
+router.patch(
+  "/decreaseTheVangCauThu/:idCauThu",
+  CauThuController.DecreaseTheVang
+);
+router.patch("/decreaseTheDoCauThu/:idCauThu", CauThuController.DecreaseTheDo);
+router.patch(
+  "/decreaseBanThangCauThu/:idCauThu",
+  CauThuController.DecreaseBanThang
+);
 router.delete("/deletecauthu/:id", CauThuController.DeleteCauThu);
 router.get("/search/:key", CauThuController.SearchCauThu);
 router.get("/searchbyMG/:muagiaiID", CauThuController.SearchCauThubyMG);

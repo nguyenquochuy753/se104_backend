@@ -25,7 +25,7 @@ const CauThu = {
 
   GetaPlayer: async (req, res) => {
     try {
-      const CT = await CauThuModel.findById({_id: req.params.id});
+      const CT = await CauThuModel.findById({ _id: req.params.id });
       res.status(200).json(CT);
     } catch (error) {
       res.status(500).send(error);
@@ -117,14 +117,42 @@ const CauThu = {
       if (err) console.log(err);
       if (ct) res.status(200).json(ct);
     });
+  },
+  DecreaseTheVang: async (req, res) => {
+    CauThuModel.findOneAndUpdate(
+      { _id: req.params.idCauThu },
+      { $inc: { SOTHEVANG: -1 } }
+    ).exec((err, ct) => {
+      if (err) console.log(err);
+      if (ct) res.status(200).json(ct);
+    });
+  },
+  DecreaseTheDo: async (req, res) => {
+    CauThuModel.findOneAndUpdate(
+      { _id: req.params.idCauThu },
+      { $inc: { SOTHEDO: -1 } }
+    ).exec((err, ct) => {
+      if (err) console.log(err);
+      if (ct) res.status(200).json(ct);
+    });
+  },
+  DecreaseBanThang: async (req, res) => {
+    CauThuModel.findOneAndUpdate(
+      { _id: req.params.idCauThu },
+      { $inc: { SOBANTHANG: -1 } }
+    ).exec((err, ct) => {
+      if (err) console.log(err);
+      if (ct) res.status(200).json(ct);
+    });
+  },
   topGhiBan: async (req, res) => {
     try {
       const sortCauThus = await CauThuModel.find({}).sort({
-        SOBANTHANG: -1
-      })
-      res.status(200).json(sortCauThus)
+        SOBANTHANG: -1,
+      });
+      res.status(200).json(sortCauThus);
     } catch (error) {
-      res.status(500).json(error)
+      res.status(500).json(error);
     }
   },
   topThePhat: async (req, res) => {
