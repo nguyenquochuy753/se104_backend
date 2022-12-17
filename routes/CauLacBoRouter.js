@@ -10,5 +10,6 @@ router.patch('/updatecaulacbo/:id', CauLacBoController.UpdateCauLacBo);
 router.delete('/deletecaulacbo/:id', CauLacBoController.DeleteCauLacBo);
 router.get('/search/:key', CauLacBoController.SearchCauLacBo);
 router.get('/searchbyMG/:muagiaiID', CauLacBoController.SearchCauLacBobyMG);
+router.get('/searchbyMG_key/:muagiaiID/:key', CauLacBoController.SearchCauLacBobyMG_key);
 
 module.exports = router

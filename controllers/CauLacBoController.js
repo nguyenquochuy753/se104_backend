@@ -62,8 +62,22 @@ const CauLacBo = {
         const { muagiaiID } = req.params;
         const data = await CauLacBoModel.find({ MAMG: muagiaiID })
         res.send(data)
-    }
-
+    },
+    SearchCauLacBobyMG_key: async (req, res) => {
+        const { muagiaiID } = req.params;
+        const data = await CauLacBoModel.find({
+          $and: [
+            {
+          $or: [
+            { TENCLB: { $regex: req.params.key, $options: 'i' } },
+            { SANVANDONG: { $regex: req.params.key, $options: 'i' } }
+          ],
+          },
+            { MAMG: muagiaiID },
+          ],
+        })
+        res.send(data)
+    },
 }
 
 module.exports = CauLacBo

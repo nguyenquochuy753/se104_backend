@@ -9,5 +9,5 @@ router.patch('/updatecauthu/:id', CauThuController.UpdateCauThu);
 router.delete('/deletecauthu/:id', CauThuController.DeleteCauThu);
 router.get('/search/:key', CauThuController.SearchCauThu);
 router.get('/searchbyMG/:muagiaiID', CauThuController.SearchCauThubyMG);
-
+router.get('/searchbyMG_key/:muagiaiID/:key', CauThuController.SearchCauThubyMG_key);
 module.exports = router

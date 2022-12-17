@@ -53,7 +53,8 @@ const CauThu = {
   SearchCauThu: async (req, res) => {
     const data = await CauThuModel.find({
         "$or": [
-            { HOTEN: { $regex: req.params.key, $options: 'i' } }
+            { HOTEN: { $regex: req.params.key, $options: 'i' } },
+            { QUOCTICH: { $regex: req.params.key, $options: 'i' } },
         ]
     })
     res.send(data)
@@ -62,6 +63,21 @@ const CauThu = {
       const { muagiaiID } = req.params;
       const data = await CauThuModel.find({ MAMG: muagiaiID })
       res.send(data)
+  },
+  SearchCauThubyMG_key: async (req, res) => {
+    const { muagiaiID } = req.params;
+    const data = await CauThuModel.find({
+      $and: [
+        {
+      $or: [
+        { HOTEN: { $regex: req.params.key, $options: 'i' } },
+        { QUOCTICH: { $regex: req.params.key, $options: 'i' } },
+      ],
+      },
+        { MAMG: muagiaiID },
+      ],
+    })
+    res.send(data)
   },
 };
 

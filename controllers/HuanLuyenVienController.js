@@ -60,7 +60,28 @@ const HuanLuyenVien = {
             ]
         })
         res.send(data)
-    }
+    },
+    SearchHuanLuyenVienbyMG: async (req, res) => {
+        const { muagiaiID } = req.params;
+        const data = await HuanLuyenVienModel.find({ MAMG: muagiaiID })
+        res.send(data)
+    },
+    SearchHuanLuyenVienbyMG_key: async (req, res) => {
+        const { muagiaiID } = req.params;
+        const data = await HuanLuyenVienModel.find({
+          $and: [
+            {
+          $or: [
+            { HOTEN: { $regex: req.params.key, $options: 'i' } },
+            { QUOCTICH: { $regex: req.params.key, $options: 'i' } },
+            { LOAI: { $regex: req.params.key, $options: 'i' } }
+          ],
+          },
+            { MAMG: muagiaiID },
+          ],
+        })
+        res.send(data)
+    },
 }
 
 module.exports = HuanLuyenVien
