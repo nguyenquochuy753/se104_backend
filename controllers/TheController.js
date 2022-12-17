@@ -36,6 +36,20 @@ const TheController = {
       res.status(500).send(error);
     }
   },
+  getTheByCT_TD: async (req, res) => {
+    The.find({ MACT_TD: req.params.idCT_TD })
+      .populate([
+        {
+          path: "MACT",
+          select: "HOTEN",
+        },
+      ])
+      .lean()
+      .exec((error, the) => {
+        if (error) res.send({ error });
+        if (the) res.status(200).json(the);
+      });
+  },
 };
 
 module.exports = TheController;
