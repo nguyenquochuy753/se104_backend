@@ -43,16 +43,53 @@ const CauThu = {
   },
   SearchCauThu: async (req, res) => {
     const data = await CauThuModel.find({
-        "$or": [
-            { HOTEN: { $regex: req.params.key, $options: 'i' } }
-        ]
-    })
-    res.send(data)
+      $or: [{ HOTEN: { $regex: req.params.key, $options: "i" } }],
+    });
+    res.send(data);
   },
   SearchCauThubyMG: async (req, res) => {
-      const { muagiaiID } = req.params;
-      const data = await CauThuModel.find({ MAMG: muagiaiID })
-      res.send(data)
+    const { muagiaiID } = req.params;
+    const data = await CauThuModel.find({ MAMG: muagiaiID });
+    res.send(data);
+  },
+  SearchCauThuByClub: async (req, res) => {
+    const data = await CauThuModel.find({
+      MACLB: req.params.CauLacBoID,
+    });
+    res.send(data);
+  },
+  SearchCauThuById: async (req, res) => {
+    const data = await CauThuModel.find({
+      _id: req.params.CauThuId,
+    });
+    res.status(200).json(data);
+  },
+  UpdateTheVang: async (req, res) => {
+    CauThuModel.findOneAndUpdate(
+      { _id: req.params.idCauThu },
+      { $inc: { SOTHEVANG: 1 } }
+    ).exec((err, ct) => {
+      if (err) console.log(err);
+      if (ct) res.status(200).json(ct);
+    });
+  },
+  UpdateTheDo: async (req, res) => {
+    CauThuModel.findOneAndUpdate(
+      { _id: req.params.idCauThu },
+      { $inc: { SOTHEDO: 1 } }
+    ).exec((err, ct) => {
+      if (err) console.log(err);
+      if (ct) res.status(200).json(ct);
+    });
+  },
+  UpdateBanThang: async (req, res) => {
+    CauThuModel.findOneAndUpdate(
+      { _id: req.params.idCauThu },
+      { $inc: { SOBANTHANG: 1 } }
+    ).exec((err, ct) => {
+      if (err) console.log(err);
+      if (ct) res.status(200).json(ct);
+    });
   },
 };
 
