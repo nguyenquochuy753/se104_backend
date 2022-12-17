@@ -3,11 +3,14 @@ const ThamSo = require("../models/ThamSo");
 const ThamSoController = {
   post_ThamSo: async (req, res) => {
     try {
-      ThamSo.findOne({ TENTHAMSO: req.body.TENTHAMSO }).exec((err, ts) => {
+      ThamSo.findOne({
+        MAMG: req.params.idMG,
+        TENTHAMSO: req.body.TENTHAMSO,
+      }).exec((err, ts) => {
         if (err) console.log(err);
         if (ts) {
           ThamSo.findOneAndUpdate(
-            { TENTHAMSO: req.body.TENTHAMSO },
+            { MAMG: req.params.idMG, TENTHAMSO: req.body.TENTHAMSO },
             {
               $set: {
                 GIATRITHAMSO: req.body.GIATRITHAMSO,
@@ -18,7 +21,11 @@ const ThamSoController = {
             if (ts) return res.status(201).json({ ts });
           });
         } else {
-          const thamso = new ThamSo(req.body);
+          const thamso = new ThamSo({
+            MAMG: req.params.idMG,
+            TENTHAMSO: req.body.TENTHAMSO,
+            GIATRITHAMSO: req.body.GIATRITHAMSO,
+          });
           thamso.save((err, ts) => {
             if (err) return res.status(400).json({ err });
             if (ts) return res.status(201).json({ ts });
