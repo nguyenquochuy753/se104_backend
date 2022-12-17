@@ -37,7 +37,7 @@ const ThamSoController = {
     }
   },
   get_list_ThamSo: async (req, res) => {
-    const thamso = await ThamSo.find({});
+    const thamso = await ThamSo.find({ MAMG: req.params.idMG });
     try {
       res.send(thamso);
     } catch (error) {
