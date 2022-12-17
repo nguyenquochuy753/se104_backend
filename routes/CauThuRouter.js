@@ -11,14 +11,22 @@ router.patch(
   "/updateBanThangCauThu/:idCauThu",
   CauThuController.UpdateBanThang
 );
+router.patch(
+  "/decreaseTheVangCauThu/:idCauThu",
+  CauThuController.DecreaseTheVang
+);
+router.patch("/decreaseTheDoCauThu/:idCauThu", CauThuController.DecreaseTheDo);
+router.patch(
+  "/decreaseBanThangCauThu/:idCauThu",
+  CauThuController.DecreaseBanThang
+);
 router.delete("/deletecauthu/:id", CauThuController.DeleteCauThu);
 router.get("/search/:key", CauThuController.SearchCauThu);
 router.get("/searchbyMG/:muagiaiID", CauThuController.SearchCauThubyMG);
 router.get("/searchByClub/:CauLacBoID", CauThuController.SearchCauThuByClub);
 router.get("/searchById/:CauThuId", CauThuController.SearchCauThuById);
-router.get('/getaplayer/:id', CauThuController.GetaPlayer);
-router.get('/topghiban', CauThuController.topGhiBan);
-router.get('/topthephat', CauThuController.topThePhat);
-
+router.get("/getaplayer/:id", CauThuController.GetaPlayer);
+router.get("/topghiban", CauThuController.topGhiBan);
+router.get("/topthephat", CauThuController.topThePhat);
 
 module.exports = router;
