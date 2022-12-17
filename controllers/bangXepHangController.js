@@ -37,6 +37,17 @@ const bangXepHangController = {
         } catch (error) {
             res.status(500).json('Xóa thất bại')
         }
+    },
+    sort: async(req,res)=>{
+        try {
+            const sortBangXepHang = await BangXepHangModel.find().sort({
+                DIEM:-1,
+                HIEUSO:-1
+            })
+            res.status(200).json(sortBangXepHang)
+        } catch (error) {
+            res.status(500).json(error)
+        }
     }
 }
 

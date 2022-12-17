@@ -23,6 +23,15 @@ const CauThu = {
     }
   },
 
+  GetaPlayer: async (req, res) => {
+    try {
+      const CT = await CauThuModel.findById({_id: req.params.id});
+      res.status(200).json(CT);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
+
   UpdateCauThu: async (req, res) => {
     try {
       const CT = await CauThuModel.findByIdAndUpdate(req.params.id, req.body);
@@ -90,6 +99,26 @@ const CauThu = {
       if (err) console.log(err);
       if (ct) res.status(200).json(ct);
     });
+  topGhiBan: async (req, res) => {
+    try {
+      const sortCauThus = await CauThuModel.find({}).sort({
+        SOBANTHANG: -1
+      })
+      res.status(200).json(sortCauThus)
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  },
+  topThePhat: async (req, res) => {
+    try {
+      const sortCauThus = await CauThuModel.find({}).sort({
+        SOTHEVANG: -1,
+        SOTHEDO: -1
+      })
+      res.status(200).json(sortCauThus)
+    } catch (error) {
+      res.status(500).json(error)
+    }
   },
 };
 

@@ -16,5 +16,9 @@ router.get("/search/:key", CauThuController.SearchCauThu);
 router.get("/searchbyMG/:muagiaiID", CauThuController.SearchCauThubyMG);
 router.get("/searchByClub/:CauLacBoID", CauThuController.SearchCauThuByClub);
 router.get("/searchById/:CauThuId", CauThuController.SearchCauThuById);
+router.get('/getaplayer/:id', CauThuController.GetaPlayer);
+router.get('/topghiban', CauThuController.topGhiBan);
+router.get('/topthephat', CauThuController.topThePhat);
+
 
 module.exports = router;
