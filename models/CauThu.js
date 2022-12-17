@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const CauThuSchema = mongoose.Schema({
+    MAMG: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'MuaGiai',
+        required: true
+    },
     MACLB: {
         type: mongoose.Schema.Types.ObjectId,
         ref:'CauLacBo',
