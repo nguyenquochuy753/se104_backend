@@ -1,11 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const LoaiBanThangSchema = mongoose.Schema({
-    TENBANTHANG :{
-        type: String,
-        required: true
-    }
-})
+  TEN: {
+    type: String,
+    required: true,
+  },
+});
 
-const LoaiBanThang = mongoose.model('LoaiBanThang',LoaiBanThangSchema)
-module.exports = LoaiBanThang
+const LoaiBanThang = mongoose.model("LoaiBanThang", LoaiBanThangSchema);
+module.exports = LoaiBanThang;

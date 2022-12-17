@@ -11,9 +11,24 @@ const CT_TranDauController = {
     }
   },
   get_list_CT_TranDau: async (req, res) => {
-    const CTTD = await CT_TranDau.find({});
     try {
-      res.send(CTTD);
+      // res.send(CTTD);
+      CT_TranDau.find({ MATD: req.params.id })
+        .populate([
+          {
+            path: "MATD",
+            select: ["DOI1", "DOI2"],
+            populate: [
+              { path: "DOI1", select: "TENCLB LOGO" },
+              { path: "DOI2", select: "TENCLB LOGO" },
+            ],
+          },
+        ])
+        .lean()
+        .exec((err, ct) => {
+          if (err) console.log(err);
+          if (ct) res.status(200).json(ct);
+        });
     } catch (error) {
       res.status(500).send(error);
     }

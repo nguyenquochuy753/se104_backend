@@ -1,20 +1,17 @@
 const TranDauModel = require("../models/TranDau");
-const CauLacBo = require("../models/CauLacBo");
 
 const TranDauController = {
   readTranDau: async (req, res) => {
     try {
       TranDauModel.find()
         .populate([
-          { path: "DOI1", select: ["_id", "TENCLB"] },
-          { path: "DOI2", select: ["_id", "TENCLB"] },
+          { path: "DOI1", select: ["_id", "TENCLB", "LOGO"] },
+          { path: "DOI2", select: ["_id", "TENCLB", "LOGO"] },
         ])
         .lean()
         .exec((err, trandau) => {
           if (err) console.log(err);
-          if (trandau) res.status(200).json({ trandau });
-
-          // console.log({ trandau });
+          if (trandau) res.status(200).json(trandau);
         });
     } catch (error) {
       res.status(500).json(error);
@@ -51,6 +48,28 @@ const TranDauController = {
       res.status(200).json("Xóa thành công");
     } catch (error) {
       res.status(500).json(error);
+    }
+  },
+  getTranDauById: async (req, res) => {
+    try {
+      TranDauModel.find({ _id: req.params.id })
+        .populate([
+          {
+            path: "DOI1",
+            select: "TENCLB LOGO",
+          },
+          {
+            path: "DOI2",
+            select: "TENCLB LOGO",
+          },
+        ])
+        .lean()
+        .exec((error, trandau) => {
+          if (error) res.send({ error });
+          if (trandau) res.status(200).json(trandau);
+        });
+    } catch (error) {
+      console.log(error);
     }
   },
 };

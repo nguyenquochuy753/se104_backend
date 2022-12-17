@@ -21,7 +21,7 @@ const LoaiBanThangController = {
   updateLoaiBanThang: async (req, res) => {
     try {
       const loaibanthang = await LoaiBanThangModel.findById(req.body._id);
-      loaibanthang.TENBANTHANG = req.body.TENBANTHANG;
+      loaibanthang.TEN = req.body.TEN;
       loaibanthang.save();
       res.status(200).json(loaibanthang);
     } catch (error) {

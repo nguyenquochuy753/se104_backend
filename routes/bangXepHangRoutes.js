@@ -5,5 +5,6 @@ router.get('/read',bangXepHangController.readBangXepHang)
 router.post('/add',bangXepHangController.addBangXepHang)
 router.put('/update',bangXepHangController.updateBangXepHang)
 router.delete('/delete',bangXepHangController.deleteBangXepHang)
+router.get('/sort',bangXepHangController.sort)
 
 module.exports = router

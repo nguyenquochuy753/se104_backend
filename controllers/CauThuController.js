@@ -79,6 +79,65 @@ const CauThu = {
     })
     res.send(data)
   },
+  SearchCauThuByClub: async (req, res) => {
+    const data = await CauThuModel.find({
+      MACLB: req.params.CauLacBoID,
+    });
+    res.send(data);
+  },
+  SearchCauThuById: async (req, res) => {
+    const data = await CauThuModel.find({
+      _id: req.params.CauThuId,
+    });
+    res.status(200).json(data);
+  },
+  UpdateTheVang: async (req, res) => {
+    CauThuModel.findOneAndUpdate(
+      { _id: req.params.idCauThu },
+      { $inc: { SOTHEVANG: 1 } }
+    ).exec((err, ct) => {
+      if (err) console.log(err);
+      if (ct) res.status(200).json(ct);
+    });
+  },
+  UpdateTheDo: async (req, res) => {
+    CauThuModel.findOneAndUpdate(
+      { _id: req.params.idCauThu },
+      { $inc: { SOTHEDO: 1 } }
+    ).exec((err, ct) => {
+      if (err) console.log(err);
+      if (ct) res.status(200).json(ct);
+    });
+  },
+  UpdateBanThang: async (req, res) => {
+    CauThuModel.findOneAndUpdate(
+      { _id: req.params.idCauThu },
+      { $inc: { SOBANTHANG: 1 } }
+    ).exec((err, ct) => {
+      if (err) console.log(err);
+      if (ct) res.status(200).json(ct);
+    });
+  topGhiBan: async (req, res) => {
+    try {
+      const sortCauThus = await CauThuModel.find({}).sort({
+        SOBANTHANG: -1
+      })
+      res.status(200).json(sortCauThus)
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  },
+  topThePhat: async (req, res) => {
+    try {
+      const sortCauThus = await CauThuModel.find({}).sort({
+        SOTHEVANG: -1,
+        SOTHEDO: -1,
+      });
+      res.status(200).json(sortCauThus);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
 
 module.exports = CauThu;
