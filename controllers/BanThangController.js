@@ -7,7 +7,7 @@ const BanThang = {
       await banthang.save();
       res.status(200).json(banthang);
     } catch (error) {
-      res.status(500).json(error.response.data);
+      res.status(500).json(error);
     }
   },
 
