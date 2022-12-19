@@ -24,11 +24,11 @@ const TranDauSchema = mongoose.Schema({
     required: true,
   },
   LUOTDAU: {
-    type: Number,
-    required: true,
+    type: Number
   },
   SANVANDONG: {
     type: String,
+    required: true
   },
 });
 

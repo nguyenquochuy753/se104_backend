@@ -91,7 +91,7 @@ const CT_TranDauController = {
         if (err) console.log(err);
         if (ct) res.status(200).json(ct);
       });
-    } catch (error) {}
+    } catch (error) { }
   },
   updateSCORE_2: async (req, res) => {
     try {
@@ -103,7 +103,7 @@ const CT_TranDauController = {
         if (err) console.log(err);
         if (ct) res.status(200).json(ct);
       });
-    } catch (error) {}
+    } catch (error) { }
   },
   updateCARD_1: async (req, res) => {
     try {
@@ -115,7 +115,7 @@ const CT_TranDauController = {
         if (err) console.log(err);
         if (ct) res.status(200).json(ct);
       });
-    } catch (error) {}
+    } catch (error) { }
   },
   updateCARD_2: async (req, res) => {
     try {
@@ -127,7 +127,7 @@ const CT_TranDauController = {
         if (err) console.log(err);
         if (ct) res.status(200).json(ct);
       });
-    } catch (error) {}
+    } catch (error) { }
   },
 };
 
