@@ -28,15 +28,11 @@ const TranDauController = {
   },
   updateTranDau: async (req, res) => {
     try {
-      const trandau = await TranDauModel.findById(req.body._id);
-      trandau.NGAYDIENRA = req.body.NGAYDIENRA;
-      trandau.THOIGIANDIENRA = req.body.THOIGIANDIENRA;
-      trandau.DOI1 = req.body.DOI1;
-      trandau.DOI2 = req.body.DOI2;
-      trandau.VONGDAU = req.body.VONGDAU;
-      trandau.LUOTDAU = req.body.LUOTDAU;
-      trandau.SANVANDONG = req.body.SANVANDONG;
-      trandau.save();
+      const trandau = await TranDauModel.findByIdAndUpdate(
+        req.params.idTD,
+        req.body
+      );
+      await trandau.save();
       res.status(200).json(trandau);
     } catch (error) {
       res.status(500).json(error);

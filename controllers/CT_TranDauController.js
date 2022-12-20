@@ -63,6 +63,51 @@ const CT_TranDauController = {
       res.status(500).send(error);
     }
   },
+  get_list: async (req, res) => {
+    try {
+      // res.send(CTTD);
+      CT_TranDau.find({})
+        .populate([
+          {
+            path: "MATD",
+            select: ["DOI1", "DOI2"],
+            populate: [
+              { path: "DOI1", select: "TENCLB LOGO" },
+              { path: "DOI2", select: "TENCLB LOGO" },
+            ],
+          },
+        ])
+        .lean()
+        .exec((err, ct) => {
+          if (err) console.log(err);
+          if (ct) res.status(200).json(ct);
+        });
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
+  getlistbyBXH: async (req, res) => {
+    try {
+      CT_TranDau.find({})
+        .populate([
+          {
+            path: "MATD",
+            select: ["DOI1", "DOI2"],
+            populate: [
+              { path: "DOI1", select: "TRANDACHOI THANG HOA THUA" },
+              { path: "DOI2", select: "TRANDACHOI THANG HOA THUA" },
+            ],
+          },
+        ])
+        .lean()
+        .exec((err, ct) => {
+          if (err) console.log(err);
+          if (ct) res.status(200).json(ct);
+        });
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
   update_CT_TranDau: async (req, res) => {
     try {
       const CTTD = await CT_TranDau.findByIdAndUpdate(req.params.id, req.body);

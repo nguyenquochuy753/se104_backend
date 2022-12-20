@@ -52,32 +52,32 @@ const CauThu = {
   },
   SearchCauThu: async (req, res) => {
     const data = await CauThuModel.find({
-        "$or": [
-            { HOTEN: { $regex: req.params.key, $options: 'i' } },
-            { QUOCTICH: { $regex: req.params.key, $options: 'i' } },
-        ]
-    })
-    res.send(data)
+      $or: [
+        { HOTEN: { $regex: req.params.key, $options: "i" } },
+        { QUOCTICH: { $regex: req.params.key, $options: "i" } },
+      ],
+    });
+    res.send(data);
   },
   SearchCauThubyMG: async (req, res) => {
-      const { muagiaiID } = req.params;
-      const data = await CauThuModel.find({ MAMG: muagiaiID })
-      res.send(data)
+    const { muagiaiID } = req.params;
+    const data = await CauThuModel.find({ MAMG: muagiaiID });
+    res.send(data);
   },
   SearchCauThubyMG_key: async (req, res) => {
     const { muagiaiID } = req.params;
     const data = await CauThuModel.find({
       $and: [
         {
-      $or: [
-        { HOTEN: { $regex: req.params.key, $options: 'i' } },
-        { QUOCTICH: { $regex: req.params.key, $options: 'i' } },
-      ],
-      },
+          $or: [
+            { HOTEN: { $regex: req.params.key, $options: "i" } },
+            { QUOCTICH: { $regex: req.params.key, $options: "i" } },
+          ],
+        },
         { MAMG: muagiaiID },
       ],
-    })
-    res.send(data)
+    });
+    res.send(data);
   },
   SearchCauThuByClub: async (req, res) => {
     const data = await CauThuModel.find({
@@ -162,6 +162,38 @@ const CauThu = {
         SOTHEDO: -1,
       });
       res.status(200).json(sortCauThus);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
+  getCauThuGhiBan: async (req, res) => {
+    const CT = await CauThuModel.find({ SOBANTHANG: { $gt: 0 } })
+      .populate([
+        {
+          path: "MACLB",
+          select: "TENCLB",
+        },
+      ])
+      .lean();
+    try {
+      res.status(200).json(CT);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
+  getCauThuCoThe: async (req, res) => {
+    const CT = await CauThuModel.find({
+      $or: [{ SOTHEVANG: { $gt: 0 } }, { SOTHEDO: { $gt: 0 } }],
+    })
+      .populate([
+        {
+          path: "MACLB",
+          select: "TENCLB",
+        },
+      ])
+      .lean();
+    try {
+      res.status(200).json(CT);
     } catch (error) {
       res.status(500).json(error);
     }

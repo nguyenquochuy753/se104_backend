@@ -9,6 +9,15 @@ const TranDauSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  MAMG: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "MuaGiai",
+    required: true,
+  },
+  DADAU: {
+    type: Boolean,
+    default: false,
+  },
   DOI1: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "CauLacBo",
