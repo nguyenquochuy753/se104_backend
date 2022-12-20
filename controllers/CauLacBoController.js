@@ -29,6 +29,14 @@ const CauLacBo = {
       res.status(500).json(error);
     }
   },
+  GetCauLacBo1: async (req, res) => {
+    const CLB = await CauLacBoModel.find();
+    try {
+      res.status(200).json(CLB);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
   GetaClub: async (req, res) => {
     try {
       const CLB = await CauLacBoModel.findById({ _id: req.params.id });

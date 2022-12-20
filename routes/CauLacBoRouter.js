@@ -8,6 +8,7 @@ router.post(
   CauLacBoController.TaoCauLacBo
 );
 router.get("/getcaulacbo/:idMG", CauLacBoController.GetCauLacBo);
+router.get("/getcaulacbo1/", CauLacBoController.GetCauLacBo1);
 router.get("/getaclub/:id", CauLacBoController.GetaClub);
 router.patch("/updatecaulacbo/:id", CauLacBoController.UpdateCauLacBo);
 router.delete("/deletecaulacbo/:id", CauLacBoController.DeleteCauLacBo);
