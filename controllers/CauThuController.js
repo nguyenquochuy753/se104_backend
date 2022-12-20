@@ -166,6 +166,38 @@ const CauThu = {
       res.status(500).json(error);
     }
   },
+  getCauThuGhiBan: async (req, res) => {
+    const CT = await CauThuModel.find({ SOBANTHANG: { $gt: 0 } })
+      .populate([
+        {
+          path: "MACLB",
+          select: "TENCLB",
+        },
+      ])
+      .lean();
+    try {
+      res.status(200).json(CT);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
+  getCauThuCoThe: async (req, res) => {
+    const CT = await CauThuModel.find({
+      $or: [{ SOTHEVANG: { $gt: 0 } }, { SOTHEDO: { $gt: 0 } }],
+    })
+      .populate([
+        {
+          path: "MACLB",
+          select: "TENCLB",
+        },
+      ])
+      .lean();
+    try {
+      res.status(200).json(CT);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
 
 module.exports = CauThu;
