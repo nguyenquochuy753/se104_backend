@@ -52,32 +52,32 @@ const CauThu = {
   },
   SearchCauThu: async (req, res) => {
     const data = await CauThuModel.find({
-      $or: [
-        { HOTEN: { $regex: req.params.key, $options: "i" } },
-        { QUOCTICH: { $regex: req.params.key, $options: "i" } },
-      ],
-    });
-    res.send(data);
+        "$or": [
+            { HOTEN: { $regex: req.params.key, $options: 'i' } },
+            { QUOCTICH: { $regex: req.params.key, $options: 'i' } },
+        ]
+    })
+    res.send(data)
   },
   SearchCauThubyMG: async (req, res) => {
-    const { muagiaiID } = req.params;
-    const data = await CauThuModel.find({ MAMG: muagiaiID });
-    res.send(data);
+      const { muagiaiID } = req.params;
+      const data = await CauThuModel.find({ MAMG: muagiaiID })
+      res.send(data)
   },
   SearchCauThubyMG_key: async (req, res) => {
     const { muagiaiID } = req.params;
     const data = await CauThuModel.find({
       $and: [
         {
-          $or: [
-            { HOTEN: { $regex: req.params.key, $options: "i" } },
-            { QUOCTICH: { $regex: req.params.key, $options: "i" } },
-          ],
-        },
+      $or: [
+        { HOTEN: { $regex: req.params.key, $options: 'i' } },
+        { QUOCTICH: { $regex: req.params.key, $options: 'i' } },
+      ],
+      },
         { MAMG: muagiaiID },
       ],
-    });
-    res.send(data);
+    })
+    res.send(data)
   },
   SearchCauThuByClub: async (req, res) => {
     const data = await CauThuModel.find({
