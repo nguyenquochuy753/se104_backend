@@ -21,22 +21,30 @@ const CauLacBo = {
         }
     },
 
-    GetCauLacBo: async (req, res) => {
-        const CLB = await CauLacBoModel.find({});
-        try {
-            res.status(200).json(CLB)
-        } catch (error) {
-            res.status(500).json(error)
-        }
-    },
-    GetaClub: async (req, res) => {
-        try {
-            const CLB = await CauLacBoModel.findById({_id: req.params.id});
-            res.status(200).json(CLB)
-        } catch (error) {
-            res.status(500).send(error);
-        }
-    },
+  GetCauLacBo: async (req, res) => {
+    const CLB = await CauLacBoModel.find({ MAMG: req.params.idMG });
+    try {
+      res.status(200).json(CLB);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
+  GetCauLacBo1: async (req, res) => {
+    const CLB = await CauLacBoModel.find();
+    try {
+      res.status(200).json(CLB);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
+  GetaClub: async (req, res) => {
+    try {
+      const CLB = await CauLacBoModel.findById({ _id: req.params.id });
+      res.status(200).json(CLB);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
 
     UpdateCauLacBo: async (req, res) => {
         try {
