@@ -10,7 +10,7 @@ const CauLacBo = {
             SL_CAUTHU: req.body.SL_CAUTHU,
             SL_HLV: req.body.SL_HLV,
         })
-        if(req.file){
+        if (req.file) {
             CauLacBo.LOGO = req.file.path;
         }
         try {
@@ -21,30 +21,30 @@ const CauLacBo = {
         }
     },
 
-  GetCauLacBo: async (req, res) => {
-    const CLB = await CauLacBoModel.find({ MAMG: req.params.idMG });
-    try {
-      res.status(200).json(CLB);
-    } catch (error) {
-      res.status(500).json(error);
-    }
-  },
-  GetCauLacBo1: async (req, res) => {
-    const CLB = await CauLacBoModel.find();
-    try {
-      res.status(200).json(CLB);
-    } catch (error) {
-      res.status(500).json(error);
-    }
-  },
-  GetaClub: async (req, res) => {
-    try {
-      const CLB = await CauLacBoModel.findById({ _id: req.params.id });
-      res.status(200).json(CLB);
-    } catch (error) {
-      res.status(500).send(error);
-    }
-  },
+    GetCauLacBo: async (req, res) => {
+        const CLB = await CauLacBoModel.find({ MAMG: req.params.idMG });
+        try {
+            res.status(200).json(CLB);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+    GetCauLacBo1: async (req, res) => {
+        const CLB = await CauLacBoModel.find();
+        try {
+            res.status(200).json(CLB);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+    GetaClub: async (req, res) => {
+        try {
+            const CLB = await CauLacBoModel.findById({ _id: req.params.id });
+            res.status(200).json(CLB);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    },
 
     UpdateCauLacBo: async (req, res) => {
         try {
@@ -78,7 +78,7 @@ const CauLacBo = {
         const data = await CauLacBoModel.find({ MAMG: muagiaiID })
         res.send(data)
     },
-    themHLV: async(req,res)=>{
+    themHLV: async (req, res) => {
         try {
             const id = req.body._id;
             const clb = await CauLacBoModel.findById(id)
@@ -103,19 +103,19 @@ const CauLacBo = {
     SearchCauLacBobyMG_key: async (req, res) => {
         const { muagiaiID } = req.params;
         const data = await CauLacBoModel.find({
-          $and: [
-            {
-          $or: [
-            { TENCLB: { $regex: req.params.key, $options: 'i' } },
-            { SANVANDONG: { $regex: req.params.key, $options: 'i' } }
-          ],
-          },
-            { MAMG: muagiaiID },
-          ],
+            $and: [
+                {
+                    $or: [
+                        { TENCLB: { $regex: req.params.key, $options: 'i' } },
+                        { SANVANDONG: { $regex: req.params.key, $options: 'i' } }
+                    ],
+                },
+                { MAMG: muagiaiID },
+            ],
         })
         res.send(data)
     },
-    xoaHLV: async(req,res)=>{
+    xoaHLV: async (req, res) => {
         try {
             const id = req.body._id;
             const clb = await CauLacBoModel.findById(id)
